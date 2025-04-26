@@ -3,7 +3,6 @@
 #include <stdint.h>
 
 
-/* Hardware text mode color constants. */
 enum vga_color {
 	VGA_COLOR_BLACK = 0,
 	VGA_COLOR_BLUE = 1,
@@ -98,9 +97,7 @@ void terminal_writestring(const char* data)
 
 void kernel_main(void) 
 {
-	/* Initialize terminal interface */
 	terminal_initialize();
 
-	/* Newline support is left as an exercise. */
-	terminal_writestring("Hello, kernel World! 42 Deutschland \n");
+	terminal_writestring("Hello, kernel World! 42 Deutschland");
 }

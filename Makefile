@@ -14,7 +14,7 @@ ISO_BIN = $(BOOTDIR)/$(OSBIN)
 all: check-grub $(ISO)
 
 check-grub:
-	@which grub-mkrescue > /dev/null || (echo "grub-mkrescue non trouvé, installation..." && sudo apt-get update && sudo apt-get install -y grub-pc-bin grub-common xorriso)
+	@which grub-mkrescue > /dev/null || (echo "grub-mkrescue non trouvé, installation..." && apt-get update && apt-get install -y grub-pc-bin grub-common xorriso)
 
 boot.o: $(BOOT)
 	$(AS) $(BOOT) -o boot.o

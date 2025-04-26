@@ -1,5 +1,8 @@
 # kfs_1
 
+
+Le projet kfs_1 consiste a ecrire son propre kernel de zero. Pour ce faire nous allons configurer le bootloader grub et charger notre os via ce dernier. 
+
 Qu'est ce qu'un bootloader ?
 
 Un bootloader c'est un programme qui s'execute au demarrage de l'ordinateur, son role est de charger le noyau du system d'exploitation en memoire et lui passer le controle.Il est generalement stocker dans les premiere partition du disque dur (comme le MBR- Master Boot Record ou GPT)
