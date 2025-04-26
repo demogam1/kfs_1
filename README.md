@@ -8,3 +8,4 @@ On ne peut pas charger un system d'exploitation sans charger son noyau(kernel) c
 Kernel 
 
 Un kernel est le coeur d'un system d'exploitation , il gere les ressources materielle et logicielle ainsi que la communication entre les application et le materiel.
+
