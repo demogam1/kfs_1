@@ -11,16 +11,22 @@ BOOTDIR = $(ISODIR)/boot
 ISO = ../myos.iso
 ISO_BIN = $(BOOTDIR)/$(OSBIN)
 
-all: check-grub $(ISO)
+all: check-grub check-docker $(ISO)
 
 check-grub:
 	@which grub-mkrescue > /dev/null || (echo "grub-mkrescue non trouvé, installation..." && apt-get update && apt-get install -y grub-pc-bin grub-common xorriso)
+
+check-docker:
+	@which docker > /dev/null || (echo "Docker n'est pas installé. Veuillez l'installer en suivant les instructions sur https://docs.docker.com/get-docker/." && exit 1)
 
 boot.o: $(BOOT)
 	$(AS) $(BOOT) -o boot.o
 
 kernel.o: $(KERNEL)
 	$(CC) -c $(KERNEL) -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
+
+docker:
+	sudo docker run -it -v ./:/mnt/shared/ joshwyant/gcc-cross bash
 
 $(OSBIN): boot.o kernel.o $(LINKER)
 	$(CC) -T $(LINKER) -o $(OSBIN) -ffreestanding -O2 -nostdlib boot.o kernel.o -lgcc
@@ -33,9 +39,9 @@ $(ISO): $(ISO_BIN)
 	grub-mkrescue -o $(ISO) $(ISODIR)
 
 clean:
-	rm -f *.o $(OSBIN) $(ISO) $(ISO_BIN)
+	sudo rm -f *.o $(OSBIN) $(ISO) $(ISO_BIN)
 
-.PHONY: all check-grub clean
+.PHONY: all check-grub check-docker clean
 
 
 #docker run -it -v ~/toto:/mnt/shared/ joshwyant/gcc-cross bash
