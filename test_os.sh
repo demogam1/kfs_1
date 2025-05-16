@@ -2,7 +2,7 @@
 
 #petit script qui permet de tester le iso de l'os
 
-ISO_PATH="../myos.iso"
+ISO_PATH="./myos.iso"
 
 # verifie si le fichier ISO existe
 if [ ! -f "$ISO_PATH" ]; then
