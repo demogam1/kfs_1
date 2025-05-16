@@ -53,3 +53,5 @@ clean:
 #i686-elf-gcc -c kernel.c -o kernel.o -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 
 #i686-elf-as boot.s -o boot.o
+
+#le flag -fno-rtti n'est pas mis car c'est un flag pour du cpp.
